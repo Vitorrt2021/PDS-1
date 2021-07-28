@@ -1,0 +1,133 @@
+[33mcommit e683f818c78ce7f49590c741cd918592e3ef079c[m
+Author: Vitor Ramos Turibio <vitorrt2015@gmail.com>
+Date:   Thu Jul 1 21:03:39 2021 -0300
+
+    parece pronto mais eu testar no site
+
+[1mdiff --git a/teste.c b/teste.c[m
+[1mindex 9e616e9..1db6790 100644[m
+[1m--- a/teste.c[m
+[1m+++ b/teste.c[m
+[36m@@ -60,8 +60,9 @@[m [mint main(){[m
+         }[m
+         [m
+         int nJogadas,l,c;[m
+[32m+[m[32m        int contar=0;[m
+         scanf("%d",&nJogadas);[m
+[31m-        for(int i=0;i<nJogadas;i++)[m
+[32m+[m[32m        while((!perdeu) && (contar < nJogadas))[m
+         {[m
+             scanf("%d",&l);[m
+             scanf("%d",&c);[m
+[36m@@ -75,7 +76,89 @@[m [mint main(){[m
+                 {[m
+                     contagem+=1;[m
+                 }[m
+[32m+[m[32m                else if(matriz[l][c] == 120 && ([m
+[32m+[m[32m                        matriz[l-1][c-1] == 98 ||[m
+[32m+[m[32m                        matriz[l-1][c] == 98 ||[m
+[32m+[m[32m                        matriz[l-1][c+1] == 98 ||[m
+[32m+[m[32m                        matriz[l][c-1] == 98 ||[m[41m [m
+[32m+[m[32m                        matriz[l][c+1] == 98 ||[m
+[32m+[m[32m                        matriz[l+1][c-1] == 98 ||[m
+[32m+[m[32m                        matriz[l+1][c] == 98 ||[m
+[32m+[m[32m                        matriz[l+1][c+1] == 98)[m
+[32m+[m[32m                    )[m
+[32m+[m[32m                    {[m
+[32m+[m[32m                        matriz[l][c] = matriz[l][c];[m
+[32m+[m[32m                    }[m
+[32m+[m[32m                else[m
+[32m+[m[32m                    {[m
+[32m+[m[41m                        [m
+[32m+[m[41m                        [m
+[32m+[m[32m                        if(l>0){[m
+[32m+[m[32m                            if(c>0){[m
+[32m+[m[32m                                if(matriz[l-1][c-1] == 120 && teste[l-1][c-1] == 97 )[m
+[32m+[m[32m                                {[m
+[32m+[m[32m                                 teste[l-1][c-1] = 120;[m
+[32m+[m[32m                                    contagem +=1;[m
+[32m+[m[32m                                }[m
+[32m+[m[32m                            }[m
+[32m+[m[32m                        }[m
+[32m+[m[32m                            if(matriz[l-1][c] == 120 && teste[l-1][c] == 97)[m
+[32m+[m[32m                                    {[m
+[32m+[m[32m                                     teste[l-1][c-1] = 120;[m
+[32m+[m[32m                                        contagem+=1;[m
+[32m+[m
+[32m+[m[32m                                    }[m
+[32m+[m[32m                        if(c+1<tam){[m[41m                            [m
+[32m+[m[32m                            if(matriz[l-1][c+1] == 120 && teste[l-1][c+1] == 97)[m
+[32m+[m[32m                                    {[m
+[32m+[m[32m                                        contagem +=1;[m
+[32m+[m[32m                                     teste[l-1][c+1] == 120;[m
+[32m+[m
+[32m+[m[32m                                    }[m
+[32m+[m[32m                        }[m
+[32m+[m
+[32m+[m[32m                        if(c>0){[m
+[32m+[m[32m                            if(matriz[l][c-1] == 120 && teste[l][c-1] == 97)[m
+[32m+[m[32m                                {[m
+[32m+[m[32m                                    contagem +=1;[m
+[32m+[m[32m                                 teste[l][c-1] == 120;[m
+[32m+[m[41m        [m
+[32m+[m[32m                                }[m
+[32m+[m[32m                        }[m
+[32m+[m[32m                        if(c+1<tam){[m
+[32m+[m[32m                            if(matriz[l][c+1] == 120 && teste[l][c+1] == 97)[m
+[32m+[m[32m                                {[m
+[32m+[m[32m                                    contagem +=1;[m
+[32m+[m[32m                                 teste[l][c+1] == 120;[m
+[32m+[m[32m                                }[m
+[32m+[m[32m                        }[m
+[32m+[m
+[32m+[m[32m                        if(l+1<tam){[m
+[32m+[m[32m                            if(c>0){[m
+[32m+[m[32m                                if(matriz[l+1][c-1] == 120 && teste[l+1][c-1] == 97)[m
+[32m+[m[32m                                    {[m
+[32m+[m[32m                                        contagem +=1;[m
+[32m+[m[32m                                     teste[l+1][c-1] == 120;[m
+[32m+[m[32m                                    }[m
+[32m+[m[32m                                }[m
+[32m+[m[32m                                if(matriz[l+1][c] == 120 && teste[l+1][c] == 97)[m
+[32m+[m[32m                                    {[m
+[32m+[m[32m                                        contagem +=1;[m
+[32m+[m[32m                                     teste[l+1][c] == 120;[m
+[32m+[m[32m                                    }[m
+[32m+[m[32m                    if(c+1<tam){[m
+[32m+[m[32m                            if(matriz[l+1][c+1] == 120 && teste[l+1][c+1] == 97)[m
+[32m+[m[32m                            {[m
+[32m+[m[32m                                contagem +=1;[m
+[32m+[m[32m                             teste[l+1][c+1] == 120;[m
+[32m+[m[32m                            }[m
+[32m+[m
+[32m+[m[32m                            }[m
+[32m+[m[41m                    [m
+[32m+[m[32m                        }[m
+[32m+[m[32m                    }[m[41m  [m
+             }[m
+[32m+[m[32m            contar+=1;[m
+         }[m
+ [m
+         [m
+[36m@@ -92,13 +175,14 @@[m [mint main(){[m
+         {[m
+             printf("PERDEU \n");[m
+         }[m
+[31m-        else if(vazio > contagem)[m
+[32m+[m[32m        else if(vazio == contagem)[m
+         {[m
+[31m-            printf("NÃO ACABOU \n");[m
+[31m-        }[m
+[31m-        else{[m
+             printf("VENCEU \n");[m
+         }[m
+[32m+[m[32m        else[m[41m [m
+[32m+[m[32m        {[m
+[32m+[m[32m            printf("NÃO ACABOU \n");[m
+[32m+[m[32m        }[m
+ [m
+ [m
+ [m
+[1mdiff --git a/teste.exe b/teste.exe[m
+[1mindex 3517cb9..ddaed86 100644[m
+Binary files a/teste.exe and b/teste.exe differ
